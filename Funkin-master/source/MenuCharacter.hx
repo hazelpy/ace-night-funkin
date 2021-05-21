@@ -26,7 +26,6 @@ class MenuCharacter extends FlxSprite
 		animation.addByPrefix('parents-christmas', "Parent Christmas Idle", 24);
 		animation.addByPrefix('senpai', "SENPAI idle Black Lines", 24);
 		animation.addByPrefix('ace-phase-one', "ace-phase-one", 6);
-		// Parent Christmas Idle
 
 		animation.play(character);
 		updateHitbox();
