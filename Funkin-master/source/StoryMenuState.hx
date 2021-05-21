@@ -170,6 +170,9 @@ class StoryMenuState extends MusicBeatState
 				case 'parents-christmas':
 					weekCharacterThing.setGraphicSize(Std.int(weekCharacterThing.width * 0.9));
 					weekCharacterThing.updateHitbox();
+				case 'ace-phase-one':
+					weekCharacterThing.y += 150;
+					weekCharacterThing.x -= 50;
 			}
 
 			grpWeekCharacters.add(weekCharacterThing);
@@ -423,7 +426,8 @@ class StoryMenuState extends MusicBeatState
 			case 'dad':
 				grpWeekCharacters.members[0].offset.set(120, 200);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
-
+			case 'ace-phase-one':
+				grpWeekCharacters.members[0].offset.set(-50, 150);
 			default:
 				grpWeekCharacters.members[0].offset.set(100, 100);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
