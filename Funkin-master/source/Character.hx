@@ -148,11 +148,6 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'ace_phase_one_right', 24);
 				animation.addByPrefix('singLEFT', 'ace_phase_one_left', 24);
 				animation.addByPrefix('singUP', 'ace_phase_one_up', 24);
-				
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -68, -7);
-				addOffset("singLEFT", 65, 9);
-				addOffset("singDOWN", 200, -70);
 
 				playAnim('idle');
 			case 'spooky':
