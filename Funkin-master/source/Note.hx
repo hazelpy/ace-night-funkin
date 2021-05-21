@@ -86,7 +86,6 @@ class Note extends FlxSprite
 				animation.addByPrefix('redScroll', 'red0');
 				animation.addByPrefix('blueScroll', 'blue0');
 				animation.addByPrefix('purpleScroll', 'purple0');
-				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
 
 				animation.addByPrefix('purpleholdend', 'pruple end hold');
 				animation.addByPrefix('greenholdend', 'green hold end');
@@ -108,7 +107,6 @@ class Note extends FlxSprite
 			case 0:
 				x += swagWidth * 0;
 				animation.play('purpleScroll');
-				animation.play('cheer');
 			case 1:
 				x += swagWidth * 1;
 				animation.play('blueScroll');

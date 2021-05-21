@@ -139,6 +139,22 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);
 
 				playAnim('idle');
+			case 'ace-phase-one':
+				tex = Paths.getSparrowAtlas('ace_phase_one');
+				frames = tex;
+
+				animation.addByPrefix('singDOWN', 'ace_phase_one_down', 24);
+				animation.addByPrefix('idle', 'ace_phase_one_idle', 24);
+				animation.addByPrefix('singRIGHT', 'ace_phase_one_right', 24);
+				animation.addByPrefix('singLEFT', 'ace_phase_one_left', 24);
+				animation.addByPrefix('singUP', 'ace_phase_one_up', 24);
+				
+				addOffset("singUP", -29, 27);
+				addOffset("singRIGHT", -68, -7);
+				addOffset("singLEFT", 65, 9);
+				addOffset("singDOWN", 200, -70);
+
+				playAnim('idle');
 			case 'spooky':
 				tex = Paths.getSparrowAtlas('spooky_kids_assets');
 				frames = tex;
