@@ -543,7 +543,7 @@ class PlayState extends MusicBeatState
 				  case 'experiment': {
 							defaultCamZoom = 0.9;
 							curStage = 'stage';
-							var bg:FlxSprite = new FlxSprite(-455, -300).loadGraphic(Paths.image('ace/lab'));
+							var bg:FlxSprite = new FlxSprite(-475, -300).loadGraphic(Paths.image('ace/lab'));
 							bg.antialiasing = true;
 							bg.scrollFactor.set(0.9, 0.9);
 							bg.active = false;
