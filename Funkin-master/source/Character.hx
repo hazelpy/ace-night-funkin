@@ -156,6 +156,23 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);
 
 				playAnim('idle');
+			case 'azerion-bot':
+				tex = Paths.getSparrowAtlas('azerion-bot');
+				frames = tex;
+
+				animation.addByPrefix('singDOWN', 'azerion_bot_down', 24);
+				animation.addByPrefix('idle', 'azerion_bot_idle', 24);
+				animation.addByPrefix('singRIGHT', 'azerion_bot_right', 24);
+				animation.addByPrefix('singLEFT', 'azerion_bot_left', 24);
+				animation.addByPrefix('singUP', 'azerion_bot_up', 24);
+
+				addOffset('idle', 0, -30);
+				addOffset("singUP", 0, -30);
+				addOffset("singRIGHT", 0, -30);
+				addOffset("singLEFT", 0, -30);
+				addOffset("singDOWN", 0, -30);
+
+				playAnim('idle');
 			case 'spooky':
 				tex = Paths.getSparrowAtlas('spooky_kids_assets');
 				frames = tex;
