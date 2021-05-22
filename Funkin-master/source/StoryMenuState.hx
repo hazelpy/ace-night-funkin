@@ -428,8 +428,9 @@ class StoryMenuState extends MusicBeatState
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
 
 			case 'ace-phase-one':
-				grpWeekCharacters.members[0].offset.set(-150, 200);
+				grpWeekCharacters.members[0].offset.set(120, 200);
 				grpWeekCharacters.members[0].setGraphicSize(Std.int(grpWeekCharacters.members[0].width * 1));
+				grpWeekCharacters.members[0].updateHitbox();
 				
 			default:
 				grpWeekCharacters.members[0].offset.set(100, 100);
