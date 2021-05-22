@@ -16,3 +16,4 @@ senpai
 senpai-angry
 spirit
 ace-phase-one
+azerion-bot

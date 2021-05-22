@@ -160,11 +160,11 @@ class Character extends FlxSprite
 				tex = Paths.getSparrowAtlas('azerion-bot');
 				frames = tex;
 
-				animation.addByPrefix('singDOWN', 'azerion_bot_down', 24);
-				animation.addByPrefix('idle', 'azerion_bot_idle', 24);
-				animation.addByPrefix('singRIGHT', 'azerion_bot_right', 24);
-				animation.addByPrefix('singLEFT', 'azerion_bot_left', 24);
-				animation.addByPrefix('singUP', 'azerion_bot_up', 24);
+				animation.addByPrefix('singDOWN', 'azerion-bot_down', 24);
+				animation.addByPrefix('idle', 'azerion-bot_idle', 24);
+				animation.addByPrefix('singRIGHT', 'azerion-bot_right', 24);
+				animation.addByPrefix('singLEFT', 'azerion-bot_left', 24);
+				animation.addByPrefix('singUP', 'azerion-bot_up', 24);
 
 				addOffset('idle', 0, -30);
 				addOffset("singUP", 0, -30);
