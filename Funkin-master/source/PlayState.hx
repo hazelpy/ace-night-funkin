@@ -183,6 +183,8 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			case 'experiment':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('experiment/dialogue1'));
 		}
 
 		#if desktop
@@ -809,6 +811,8 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
 				case 'thorns':
+					schoolIntro(doof);
+				case 'experiment':
 					schoolIntro(doof);
 				default:
 					startCountdown();
