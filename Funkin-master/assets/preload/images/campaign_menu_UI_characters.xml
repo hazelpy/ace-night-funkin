@@ -162,4 +162,8 @@
 	<SubTexture name="ace-phase-one0002" x="4473" y="3111" width="461" height="900"/>
 	<SubTexture name="ace-phase-one0003" x="4973" y="3108" width="461" height="900"/>
 	<SubTexture name="ace-phase-one0004" x="5472" y="3108" width="461" height="900"/>
+	<SubTexture name="ace-phase-one0005" x="5472" y="3108" width="461" height="900"/>
+	<SubTexture name="ace-phase-one0006" x="5472" y="3108" width="461" height="900"/>
+	<SubTexture name="ace-phase-one0007" x="5472" y="3108" width="461" height="900"/>
+	<SubTexture name="ace-phase-one0008" x="5472" y="3108" width="461" height="900"/>
 </TextureAtlas>
