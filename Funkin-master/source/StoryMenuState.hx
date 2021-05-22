@@ -172,7 +172,7 @@ class StoryMenuState extends MusicBeatState
 					weekCharacterThing.updateHitbox();
 				case 'ace-phase-one':
 					weekCharacterThing.setGraphicSize(Std.int(weekCharacterThing.width * 0.9));
-					weekCharacterThing.x -= -100;
+					weekCharacterThing.x -= 600;
 			}
 
 			grpWeekCharacters.add(weekCharacterThing);
