@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="azerion-bot.png">
+	<!-- Created with Adobe Animate version 21.0.4.39603 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="azerion-bot_down0000" x="0" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0001" x="0" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0002" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0003" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0004" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0005" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0006" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0007" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0008" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0009" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_down0010" x="585" y="0" width="585" height="927"/>
+	<SubTexture name="azerion-bot_idle0000" x="1170" y="0" width="595" height="927"/>
+	<SubTexture name="azerion-bot_idle0001" x="1170" y="0" width="595" height="927"/>
+	<SubTexture name="azerion-bot_idle0002" x="1765" y="0" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0003" x="1765" y="0" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0004" x="2350" y="0" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0005" x="2935" y="0" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0006" x="0" y="927" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0007" x="585" y="927" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0008" x="1170" y="927" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0009" x="1170" y="927" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0010" x="585" y="927" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_idle0011" x="585" y="927" width="585" height="927" frameX="0" frameY="0" frameWidth="595" frameHeight="927"/>
+	<SubTexture name="azerion-bot_left0000" x="1755" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0001" x="1755" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0002" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0003" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0004" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0005" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0006" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0007" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0008" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0009" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_left0010" x="2367" y="927" width="612" height="927"/>
+	<SubTexture name="azerion-bot_right0000" x="2979" y="927" width="638" height="927" frameX="0" frameY="0" frameWidth="644" frameHeight="927"/>
+	<SubTexture name="azerion-bot_right0001" x="2979" y="927" width="638" height="927" frameX="0" frameY="0" frameWidth="644" frameHeight="927"/>
+	<SubTexture name="azerion-bot_right0002" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0003" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0004" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0005" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0006" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0007" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0008" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0009" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_right0010" x="0" y="1854" width="644" height="927"/>
+	<SubTexture name="azerion-bot_up0000" x="644" y="1854" width="585" height="987"/>
+	<SubTexture name="azerion-bot_up0001" x="644" y="1854" width="585" height="987"/>
+	<SubTexture name="azerion-bot_up0002" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0003" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0004" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0005" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0006" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0007" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0008" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0009" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+	<SubTexture name="azerion-bot_up0010" x="1229" y="1854" width="585" height="979" frameX="0" frameY="-8" frameWidth="585" frameHeight="987"/>
+</TextureAtlas>
