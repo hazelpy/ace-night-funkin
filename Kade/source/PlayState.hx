@@ -678,7 +678,7 @@ class PlayState extends MusicBeatState
 					santa.animation.addByPrefix('idle', 'santa idle in fear', 24, false);
 					santa.antialiasing = true;
 					add(santa);
-			}
+			} 
 			case 'winter-horrorland':
 			{
 					curStage = 'mallEvil';
@@ -821,6 +821,15 @@ class PlayState extends MusicBeatState
 								add(waveSprite);
 								add(waveSpriteFG);
 						*/
+			}
+			case 'experiment', 'crisis': {
+					defaultCamZoom = 0.9;
+					curStage = 'stage';
+					var bg:FlxSprite = new FlxSprite(-475, -300).loadGraphic(Paths.image('ace/lab'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.9, 0.9);
+					bg.active = false;
+					add(bg);
 			}
 			default:
 			{
