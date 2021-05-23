@@ -140,7 +140,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'ace-phase-one':
-				tex = Paths.getSparrowAtlas('ace_phase_one');
+				tex = Paths.getSparrowAtlas('ace_phase_one','shared');
 				frames = tex;
 
 				animation.addByPrefix('singDOWN', 'ace_phase_one_down', 24);
@@ -157,7 +157,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'azerion-bot':
-				tex = Paths.getSparrowAtlas('azerion-bot');
+				tex = Paths.getSparrowAtlas('azerion-bot','shared');
 				frames = tex;
 
 				animation.addByPrefix('singDOWN', 'azerion-bot_down', 24);
