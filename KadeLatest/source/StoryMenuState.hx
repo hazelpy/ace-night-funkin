@@ -33,6 +33,19 @@ class StoryMenuState extends MusicBeatState
 		['Senpai', 'Roses', 'Thorns'],
 		['Experiment', 'Crisis']
 	];
+	
+	var yellowBG:FlxSprite;
+	var weekColors:Array<Dynamic> = [
+		0xFFff5a5a,
+		0xFFaf73ff,
+		0xFFffff85,
+		0xFFff7d00,
+		0xFFff4545,
+		0xFF91ff9b,
+		0xFFff739b,
+		0xFFff4545
+	];
+
 	var curDifficulty:Int = 1;
 
 	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true];
@@ -107,7 +120,8 @@ class StoryMenuState extends MusicBeatState
 		rankText.screenCenter(X);
 
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
-		var yellowBG:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFFF9CF51);
+		yellowBG = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFFFFFFFF);
+		yellowBG.color = weekColors[0];
 
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);
@@ -123,7 +137,7 @@ class StoryMenuState extends MusicBeatState
 		trace("Line 70");
 
 		for (i in 0...weekData.length)
-		{
+		{	
 			var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height + 10, i);
 			weekThing.y += ((weekThing.height + 20) * i);
 			weekThing.targetY = i;
@@ -360,6 +374,9 @@ class StoryMenuState extends MusicBeatState
 			curWeek = weekData.length - 1;
 
 		var bullShit:Int = 0;
+		
+		// Figuring out why this doesn't work.
+		yellowBG.color = weekColors[curWeek];
 
 		for (item in grpWeekText.members)
 		{
@@ -385,10 +402,20 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.text = "Tracks\n";
 		var stringThing:Array<String> = weekData[curWeek];
 
-		for (i in stringThing)
-		{
-			txtTracklist.text += "\n" + i;
+		switch(curWeek) {
+			default:
+				for (i in stringThing)
+				{
+					txtTracklist.text += "\n" + i;
+				}
+			case 0:
+				txtTracklist.text += "\nTutori l";
+			case 7:
+				txtTracklist.text += "\nExperiment";
+				txtTracklist.text += "\nCrisis";
 		}
+
+		txtTracklist.text += "\n";
 
 		txtTracklist.text = txtTracklist.text.toUpperCase();
 

@@ -166,10 +166,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'azerion-bot_left', 24);
 				animation.addByPrefix('singUP', 'azerion-bot_up', 24);
 
-				addOffset('idle', 150, 167);
-				addOffset("singUP", 150, 250);
+				addOffset('idle', 150, 174);
+				addOffset("singUP", 153, 234);
 				addOffset("singRIGHT", 150, 175);
-				addOffset("singLEFT", 165, 175);
+				addOffset("singLEFT", 174, 174);
 				addOffset("singDOWN", 150, 175);
 
 				playAnim('idle');

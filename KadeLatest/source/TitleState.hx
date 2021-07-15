@@ -46,7 +46,13 @@ class TitleState extends MusicBeatState
 
 	var curWacky:Array<String> = [];
 
+	var dontAnimateGF:Bool = false;
+
 	var wackyImage:FlxSprite;
+
+	var logoBumpin:FlxSprite;
+	var FNFlogoBumpin:FlxSprite;
+	var gfDance:FlxSprite;
 
 	override public function create():Void
 	{
@@ -121,7 +127,13 @@ class TitleState extends MusicBeatState
 	}
 
 	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
+
+	var labBG:FlxSprite;
+
+	var fnfYPosition:Float;
+	var logoYPosition:Float;
+	var gfPosY:Float;
+
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 
@@ -163,21 +175,80 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
+		labBG = new FlxSprite().loadGraphic(Paths.image('labBG'));
+		labBG.antialiasing = true;
+		labBG.setGraphicSize(Std.int(labBG.width * 4));
+		labBG.updateHitbox();
+		labBG.screenCenter();
+		add(labBG);
+
 		logoBl = new FlxSprite(-150, -100);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logoBl.animation.play('bump');
+		logoBl.visible = false;
 		logoBl.updateHitbox();
+		add(logoBl);
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
-		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
-		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
-		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		var fnfXPosition = 25; // (FlxG.width / 14);
+		fnfYPosition = -25;
+		FNFlogoBumpin = new FlxSprite(fnfXPosition, -775).loadGraphic(Paths.image('fnfLogo'));
+		FNFlogoBumpin.antialiasing = true;
+		FNFlogoBumpin.setGraphicSize(Std.int(FNFlogoBumpin.width/1.4));
+		FNFlogoBumpin.updateHitbox();
+		FNFlogoBumpin.screenCenter(X);
+		add(FNFlogoBumpin);
+
+		var logoXPosition = -50; // (FlxG.width / 14);
+		logoYPosition = 225;
+		logoBumpin = new FlxSprite(logoXPosition, -600).loadGraphic(Paths.image('logoText'));
+		logoBumpin.antialiasing = true;
+		logoBumpin.setGraphicSize(Std.int(logoBumpin.width/2.8));
+		logoBumpin.updateHitbox();
+		logoBumpin.screenCenter(X);
+		add(logoBumpin);
+
+		var textBump = new FlxTimer().start(0.5882, function onComplete(timer:FlxTimer) {
+			var scaleX = logoBumpin.scale.x;
+			var scaleY = logoBumpin.scale.y;
+			var FNFscaleX = FNFlogoBumpin.scale.x;
+			var FNFscaleY = FNFlogoBumpin.scale.y;
+
+			logoBumpin.scale.set(scaleX * 1.2, scaleY * 1.2);
+			logoBumpin.updateHitbox();
+			logoBumpin.x = logoXPosition;
+			logoBumpin.screenCenter(X);
+			logoBumpin.y = logoYPosition;
+
+			FNFlogoBumpin.scale.set(FNFscaleX * 1.2, FNFscaleY * 1.2);
+			FNFlogoBumpin.updateHitbox();
+			FNFlogoBumpin.x = fnfXPosition;
+			FNFlogoBumpin.screenCenter(X);
+			FNFlogoBumpin.y = fnfYPosition;
+			
+			FlxTween.tween(logoBumpin, {"scale.x": scaleX, "scale.y": scaleY}, 0.2, {
+				ease: FlxEase.expoOut
+			});
+
+			FlxTween.tween(FNFlogoBumpin, {"scale.x": FNFscaleX, "scale.y": FNFscaleY}, 0.2, {
+				ease: FlxEase.expoOut
+			});
+		}, 0);
+
+		gfPosY = FlxG.height * 0.33;
+		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.8);
+		gfDance.frames = Paths.getSparrowAtlas('GF_assets');
+		gfDance.animation.addByIndices('danceLeft', 'GF Dancing Beat', [29, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		gfDance.animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], "", 24, false);
+		gfDance.animation.addByPrefix('GF Cheer', 'GF Cheer', 24);
 		gfDance.antialiasing = true;
+		gfDance.setGraphicSize(Std.int(gfDance.height / 1.8));
+		gfDance.screenCenter(X);
 		add(gfDance);
+
 		add(logoBl);
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
@@ -298,6 +369,9 @@ class TitleState extends MusicBeatState
 			if (FlxG.save.data.flashing)
 				titleText.animation.play('press');
 
+			dontAnimateGF = true;
+			gfDance.animation.play("GF Cheer");
+
 			FlxG.camera.flash(FlxColor.WHITE, 1);
 			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
@@ -318,17 +392,9 @@ class TitleState extends MusicBeatState
 				{
 					returnedData[0] = data.substring(0, data.indexOf(';'));
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
-					{
-						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
-						OutdatedSubState.needVer = returnedData[0];
-						OutdatedSubState.currChanges = returnedData[1];
-						FlxG.switchState(new OutdatedSubState());
-					}
-					else
-					{
-						FlxG.switchState(new MainMenuState());
-					}
+
+					// got rid of that out of date bullshit, fuck you kadedev lmaooo
+					FlxG.switchState(new MainMenuState());
 				}
 				
 				http.onError = function (error) {
@@ -383,70 +449,43 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		logoBl.animation.play('bump');
 		danceLeft = !danceLeft;
 
-		if (danceLeft)
-			gfDance.animation.play('danceRight');
-		else
-			gfDance.animation.play('danceLeft');
+		if (!dontAnimateGF) {
+			if (danceLeft)
+				gfDance.animation.play('danceRight');
+			else
+				gfDance.animation.play('danceLeft');
+		}
 
 		FlxG.log.add(curBeat);
 
 		switch (curBeat)
 		{
-			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
-			// credTextShit.visible = true;
-			case 3:
-				addMoreText('present');
-			// credTextShit.text += '\npresent...';
-			// credTextShit.addText();
+			case 2:
+				createCoolText(['rushtoxin', 'justghg', 'scottthemoody', 'mord33']);
 			case 4:
-				deleteCoolText();
-			// credTextShit.visible = false;
-			// credTextShit.text = 'In association \nwith';
-			// credTextShit.screenCenter();
+				addMoreText('bringing to you');
 			case 5:
-				if (Main.watermarks)
-					createCoolText(['Kade Engine', 'by']);
-				else
-					createCoolText(['In Partnership', 'with']);
+				deleteCoolText();
+				addMoreText('Built off of');
 			case 7:
-				if (Main.watermarks)
-					addMoreText('KadeDeveloper');
-				else
-				{
-					addMoreText('Newgrounds');
-					ngSpr.visible = true;
-				}
-			// credTextShit.text += '\nNewgrounds';
+				addMoreText('Kade Engine');
 			case 8:
 				deleteCoolText();
 				ngSpr.visible = false;
-			// credTextShit.visible = false;
-
-			// credTextShit.text = 'Shoutouts Tom Fulp';
-			// credTextShit.screenCenter();
 			case 9:
 				createCoolText([curWacky[0]]);
-			// credTextShit.visible = true;
 			case 11:
 				addMoreText(curWacky[1]);
-			// credTextShit.text += '\nlmao';
 			case 12:
 				deleteCoolText();
-			// credTextShit.visible = false;
-			// credTextShit.text = "Friday";
-			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
-			// credTextShit.visible = true;
+				addMoreText('FNF');
 			case 14:
-				addMoreText('Night');
-			// credTextShit.text += '\nNight';
+				addMoreText('Advanced');
 			case 15:
-				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+				addMoreText('Aberrations');
 
 			case 16:
 				skipIntro();
@@ -464,6 +503,22 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 			skippedIntro = true;
+
+			FlxTween.tween(gfDance, {y: gfPosY}, 4, {
+				ease: FlxEase.expoOut
+			});
+
+			FlxTween.tween(logoBumpin, {y: logoYPosition}, 4, {
+				ease: FlxEase.expoOut
+			});
+	
+			FlxTween.tween(FNFlogoBumpin, {y: fnfYPosition}, 4, {
+				ease: FlxEase.expoOut
+			});
+
+			FlxTween.tween(labBG, {"scale.x": 1, "scale.y": 1}, 4, {
+				ease: FlxEase.expoOut
+			});
 		}
 	}
 }

@@ -13,6 +13,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 
@@ -69,14 +70,33 @@ class OptionsMenu extends MusicBeatState
 	var blackBorder:FlxSprite;
 	override function create()
 	{
-		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuDesat"));
+		var bgColorSolid:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFF7d2d2d);
+		bgColorSolid.screenCenter();
+		bgColorSolid.updateHitbox();
+		bgColorSolid.antialiasing = true;
+		add(bgColorSolid);
 
-		menuBG.color = 0xFFea71fd;
+		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGMagenta"));
+
+		menuBG.color = 0xFFFFFFFF;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
 		menuBG.antialiasing = true;
 		add(menuBG);
+
+		var bgBump = new FlxTimer().start(0.5882, function onComplete(timer:FlxTimer) {
+			var scaleX = menuBG.scale.x;
+			var scaleY = menuBG.scale.y;
+
+			menuBG.scale.set(scaleX * 1.05, scaleY * 1.05);
+			menuBG.updateHitbox();
+			menuBG.screenCenter();
+			
+			FlxTween.tween(menuBG, {"scale.x": scaleX, "scale.y": scaleY}, 0.2, {
+				ease: FlxEase.expoOut
+			});
+		}, 0);
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);

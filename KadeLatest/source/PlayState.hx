@@ -335,6 +335,12 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			case 'experiment':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('experiment/demoDialogue'));
+			/* case 'system':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('system/dialogue'));
+			case 'crisis':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('crisis/dialogue')); */ // Temporarily disabled
 		}
 
 		switch(SONG.stage)
@@ -688,6 +694,18 @@ class PlayState extends MusicBeatState
 	
 						add(stageCurtains);
 				}
+			case 'lab':
+				{
+						defaultCamZoom = 0.9;
+						curStage = 'lab';
+						var bg:FlxSprite = new FlxSprite(-550, -450).loadGraphic(Paths.image('aberrations/lab'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(0.9, 0.9);
+						bg.setGraphicSize(Std.int(bg.width));
+						bg.updateHitbox();
+						bg.active = false;
+						add(bg);
+				}
 			default:
 			{
 					defaultCamZoom = 0.9;
@@ -773,6 +791,8 @@ class PlayState extends MusicBeatState
 				dad.x -= 150;
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+			case 'azerion-bot':
+				camPos.x += 500;
 		}
 
 
@@ -1026,6 +1046,12 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'thorns':
 					schoolIntro(doof);
+				case 'experiment':
+					schoolIntro(doof);
+				/* case 'system':
+					schoolIntro(doof);
+				case 'crisis':
+					schoolIntro(doof); */ // Temporarily disabled
 				default:
 					startCountdown();
 			}
@@ -2504,6 +2530,7 @@ class PlayState extends MusicBeatState
 					prevCamFollow = camFollow;
 
 					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
+					PlayState.SONG.difficulty = difficulty;
 					FlxG.sound.music.stop();
 
 					LoadingState.loadAndSwitchState(new PlayState());
@@ -2556,7 +2583,9 @@ class PlayState extends MusicBeatState
 					score = -300;
 					combo = 0;
 					misses++;
-					health -= 0.2;
+					if (PlayState.SONG.song.toLowerCase() == "crisis old" && PlayState.SONG.difficulty == '-easy')
+						health -= 0;
+					else health -= 0.2;
 					ss = false;
 					shits++;
 					if (FlxG.save.data.accuracyMod == 0)
@@ -2564,7 +2593,9 @@ class PlayState extends MusicBeatState
 				case 'bad':
 					daRating = 'bad';
 					score = 0;
-					health -= 0.06;
+					if (PlayState.SONG.song.toLowerCase() == "crisis old" && PlayState.SONG.difficulty == '-easy')
+						health += 0.7;
+					else health -= 0.006;
 					ss = false;
 					bads++;
 					if (FlxG.save.data.accuracyMod == 0)
@@ -2575,12 +2606,18 @@ class PlayState extends MusicBeatState
 					ss = false;
 					goods++;
 					if (health < 2)
-						health += 0.04;
+						if (PlayState.SONG.song.toLowerCase() == "crisis old" && PlayState.SONG.difficulty == '-easy')
+							if (health < 1.6)
+								health = 1.6;
+							else health += 0.4;
+						else health += 0.04;
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 0.75;
 				case 'sick':
 					if (health < 2)
-						health += 0.1;
+						if (PlayState.SONG.song.toLowerCase() == "crisis old" && PlayState.SONG.difficulty == '-easy')
+							health = 2;
+						else health += 0.1;
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 1;
 					sicks++;
@@ -2998,7 +3035,16 @@ class PlayState extends MusicBeatState
 	{
 		if (!boyfriend.stunned)
 		{
-			health -= 0.04;
+			switch (PlayState.SONG.song.toLowerCase()) {
+				case 'crisis old':
+					if (PlayState.SONG.difficulty == "-easy") {
+						health -= 0.005;
+					} else {
+						health -= 0.04;
+					}
+				default:
+					health -= 0.04;
+			}
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');

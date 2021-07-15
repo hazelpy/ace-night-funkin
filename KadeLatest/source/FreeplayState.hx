@@ -7,6 +7,9 @@ import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import flixel.util.FlxTimer;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 
@@ -66,9 +69,23 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD MUSIC
 
-		// LOAD CHARACTERS
+		// LOAD CHARACTERS 
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
+
+		var bgBump = new FlxTimer().start(0.5882, function onComplete(timer:FlxTimer) {
+			var scaleX = bg.scale.x;
+			var scaleY = bg.scale.y;
+
+			bg.scale.set(scaleX * 1.05, scaleY * 1.05);
+			bg.updateHitbox();
+			bg.screenCenter();
+			
+			FlxTween.tween(bg, {"scale.x": scaleX, "scale.y": scaleY}, 0.2, {
+				ease: FlxEase.expoOut
+			});
+		}, 0);
+
 		add(bg);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
@@ -278,9 +295,12 @@ class FreeplayState extends MusicBeatState
 		for (item in grpSongs.members)
 		{
 			item.targetY = bullShit - curSelected;
+
+			// yknow, I was gonna do something cool for freeplay state. but Kade HAD to go and write this dog shit code, damn
 			bullShit++;
 
 			item.alpha = 0.6;
+			
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
 			if (item.targetY == 0)
